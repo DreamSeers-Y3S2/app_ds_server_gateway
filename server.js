@@ -14,6 +14,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", proxy("http://localhost:5002"));
 app.use("/items", proxy("http://localhost:5003"));
+app.use("/cart-items", proxy("http://localhost:5004"));
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, console.log(`Server Started on port ${PORT}..`));
