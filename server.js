@@ -17,7 +17,7 @@ app.use("/items", proxy("http://localhost:5003"));
 app.use("/cart-items", proxy("http://localhost:5004"));
 app.use("/pay", proxy("http://localhost:5005"));
 app.use("/rate", proxy("http://localhost:5006"));
-app.use("/delivery", proxy("http://localhost:5007"));
+app.use("/deliveries", proxy("http://localhost:5007"));
 app.use("/orders", proxy("http://localhost:5008"));
 
 const PORT = process.env.PORT || 5001;
