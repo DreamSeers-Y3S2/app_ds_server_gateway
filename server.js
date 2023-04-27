@@ -12,13 +12,17 @@ app.get("/", (req, res) => {
 	res.send("API is Running");
 });
 
-app.use("/user", proxy("http://localhost:5002"));
-app.use("/items", proxy("http://localhost:5003"));
-app.use("/cart-items", proxy("http://localhost:5004"));
-app.use("/pay", proxy("http://localhost:5005"));
-app.use("/rate", proxy("http://localhost:5006"));
-app.use("/deliveries", proxy("http://localhost:5007"));
-app.use("/orders", proxy("http://localhost:5008"));
+/*
+	This is the gateway which is directly exposed to the clients to retrieve data. For security purposes this gate way restricts direct access to the services.
+*/
+ 
+app.use("/user", proxy("http://localhost:5002")); //proxy to access user management service
+app.use("/items", proxy("http://localhost:5003")); //proxy to access product management service
+app.use("/cart-items", proxy("http://localhost:5004")); //proxy to access cart management service
+app.use("/pay", proxy("http://localhost:5005")); //proxy to access payment management service
+app.use("/rate", proxy("http://localhost:5006")); //proxy to access review management service
+app.use("/deliveries", proxy("http://localhost:5007")); //proxy to access delivery management service
+app.use("/orders", proxy("http://localhost:5008")); //proxy to access order management service
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, console.log(`Server Started on port ${PORT}..`));
